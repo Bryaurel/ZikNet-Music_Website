@@ -42,3 +42,10 @@ form input[type="submit"] {
 form input[type="submit"]:hover {
     background-color: #2980b9;
 }
+
+.FirstPage{
+    background-image: url(Media/bg.png);
+    background-size: cover;
+    background-attachment: fixed;
+    width: 100%;
+}
