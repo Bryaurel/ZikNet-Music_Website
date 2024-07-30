@@ -81,15 +81,30 @@ form input {
 
 /* For screens smaller than 600px (mobile) */
 @media (max-width: 600px) {
-    /* CSS rules for mobile layout */
+    body {
+        background-image: url('/path/to/your/image.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
 }
 
 /* For screens between 600px and 1024px (tablet) */
 @media (min-width: 601px) and (max-width: 1024px) {
-    /* CSS rules for tablet layout */
+    body {
+        background-image: url('/path/to/your/image.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
 }
 
 /* For screens larger than 1024px (desktop) */
 @media (min-width: 1025px) {
-    /* CSS rules for desktop layout */
+    body {
+        background-image: url('/path/to/your/image.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
 }
