@@ -7,10 +7,28 @@
     <title>ZikNet</title>
 </head>
 <body>
+
     <div class="FirstPage">
-        <h1>Welcome to ZikNet</h1>
-        <p>Here you can find the best music for your ears</p>
-        <a href="login.php">Login</a>
-        <a href="register.php">Register</a>
+
+        <div class="content">
+            <div class="welcome">
+                <h1>Welcome to ZikNet</h1>
+                <p>Join our Musical Community now!</p>
+            </div>
+
+            <div class="form">
+                <p id="Registration" class="form">
+                    <form action="register.php" method="post" id="registration-form">
+                        <input type="text" name="firstname" placeholder="First name" required><br>
+                        <input type="text" name="lastname" placeholder="Last name" required><br>
+                        <input type="email" name="email" id="email" placeholder="E-mail address" required><br>
+                        <input type="password" name="password" placeholder="Password" required><br>
+                        <input type="submit" value="Register">
+                    </form>
+                    Have an account already ?  
+                    <a href="login.html">Log in</a>
+                </p>
+            </div>
+        </div>
     </div>
 </body>
