@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZikNet - Homepage</title>
+    <link rel="stylesheet" href="styles-home.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div id="root"></div>
+    <header class="main-nav fixed-nav">
+        <h1>ZikNet</h1>
+        <nav>
+            <ul>
+                <li><a href="homepage.html">Home</a></li>
+                <li><a href="profile.html">My Profile</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="exercices.html">Exercices</a></li>
+                <li><a href="opportunities.html">Opportunities</a></li>
+                <li><a href="messages.html">Messages</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <aside class="sidebar fixed-nav">
+        <nav>
+            <ul>
+                <li><a href="#videos">User Videos</a></li>
+                <li><a href="#posts">Recent Posts</a></li>
+                <li><a href="#profiles">Profiles suggested for you</a></li>
+            </ul>
+        </nav>
+    </aside>
+    
+    <main>
+        <!-- Video Section -->
+        <section id="videos">
+            <h2>User Videos</h2>
+            <!-- Contenu des vidéos fictives -->
+            <div class="video-thumbnail">
+                <div class="video">
+                    <div class="options-left">
+                        <i class="fas fa-thumbs-up"></i> <!-- Icône de like -->
+                        <i class="fas fa-comment"></i> <!-- Icône de commentaire -->
+                        <i class="fas fa-user-plus"></i> <!-- Icône d'abonnement -->
+                    </div>
+                    <div class="video-content-right">
+                        <!-- Contenu de la vidéo -->
+                        <video id="alu-choir" width="640" height="360" controls>
+                            <source src="Media/WhatsApp Video 2024-04-08 at 12.51.02_1799b7ff.mp4" type="video/mp4">
+                        </video><h3>Performance of the ALU CHOIR for Kwibuka30</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="video-thumbnail">
+                <video width="640" height="360" controls>
+                    <source src="Media/guitar_chords_h264_83212.mp4" type="video/mp4">                    
+                </video>
+                <h3>Guitar Tutorial</h3>
+            </div>
+            <!-- Add more videos -->
+        </section>
+        
+        <!-- Post section -->
+        <section id="posts">
+            <h2>User Posts</h2>
+            <!-- Contenu des publications fictives -->
+            
+            <div class="post">
+                <h3>Title of the post</h3>
+                <img src="Media/download1.jpg" alt="Performance">
+                <p>lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <!-- Ajoutez des images fictives si nécessaire -->
+            </div>
+            
+            <div class="post">
+                <h3>Title of the post</h3>
+                <img src="Media/OIP1.jpg" alt="Description">
+                <p>lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <!-- Ajoutez des images fictives si nécessaire -->
+            </div>
+            
+            <div class="post">
+                <h3>Title of the post</h3>                
+                <img src="Media/download2.jpg" alt="Description">
+                <p>lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                
+                <!-- Ajoutez des images fictives si nécessaire -->
+            </div>
+            <!-- Ajoutez plus de publications fictives si nécessaire -->
+        </section>
+        
+
+        <!-- Profiles section -->
+        <section id="profiles">
+            <h2>Profiles suggested for you</h2>
+            <!-- Contenu des profils fictifs -->
+            <div class="profil">
+                <img src="Media/OIP.jpg" alt="Profile image">
+                <h3>User 1</h3>
+                <p>lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+    
+            <div class="profil">
+                <img src="Media/OIP3.jpg" alt="Profile image">
+                <h3>User 2</h3>
+                <p>lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+    
+            <div class="profil">
+                <img src="Media/download3.jpg" alt="Profile image">
+                <h3>User 3</h3>
+                <p>lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+    
+            <div class="profil">
+                <img src="Media/OIP2.jpg" alt="Profile image">
+                <h3>User 4</h3>
+                <p>lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+            <!-- Ajoutez plus de profils fictifs si nécessaire -->
+        </section>
+    
+    </main>    
+    
+    <footer>
+        <p>&copy; 2024 ZikNet. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>
