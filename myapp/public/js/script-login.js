@@ -1,4 +1,4 @@
-document.getElementById('login').addEventListener('submit', async (e) => {
+document.getElementById('login-form').addEventListener('submit', async (e) => {
     e.preventDefault();
     const response = await fetch('/api/auth/login', {
         method: 'POST',
@@ -6,8 +6,8 @@ document.getElementById('login').addEventListener('submit', async (e) => {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            email: document.getElementById('email').value,
-            password: document.getElementById('password').value,
+            email: document.querySelector('[name="email"]').value,
+            password: document.querySelector('name="password"]').value,
         }),
     });
 

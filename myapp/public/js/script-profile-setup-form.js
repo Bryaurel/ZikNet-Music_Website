@@ -1,5 +1,3 @@
-const user = require("./myapp/models/User");
-
 document.getElementById('profile-setup-form').addEventListener('submit', async (e) => {
     e.preventDefault();
     const token = localStorage.getItem('token');
@@ -7,7 +5,7 @@ document.getElementById('profile-setup-form').addEventListener('submit', async (
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': token,
+            'Authorization': `Bearer ${token}`,
         },
         body: JSON.stringify({
             username: document.getElementById('username').value,
@@ -17,7 +15,7 @@ document.getElementById('profile-setup-form').addEventListener('submit', async (
             country: document.getElementById('country').value,
             favoriteGenres: document.getElementById('favoriteGenres').value,
             bio: document.getElementById('bio').value,
-            profilePhoto: document.getElementById('profilePhoto').value,
+            profilePhoto: document.getElementById('profilePicture').value,
         }),
     });
 

@@ -1,4 +1,4 @@
-document.getElementById('Registration').addEventListener('submit', async (e) => {
+document.getElementById('registration-form').addEventListener('submit', async (e) => {
     e.preventDefault();
     const response = await fetch('/api/auth/register', {
         method: 'POST',
@@ -6,10 +6,10 @@ document.getElementById('Registration').addEventListener('submit', async (e) => 
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            firstname: document.getElementById('firstname').value,
-            lastname: document.getElementById('lastname').value,
-            email: document.getElementById('email').value,
-            password: document.getElementById('password').value,
+            firstname: document.querySelector('[name="firstname"]').value,
+            lastname: document.querySelector('[name="lastname"]').value,
+            email: document.querySelector('[name="email"]').value,
+            password: document.querySelector('[name="password"]').value,
         }),
     });
 
