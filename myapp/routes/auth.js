@@ -2,9 +2,10 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
-const user = require('../models/User');
+
 
 const router = express.Router();
+const authMiddleware = require('../middlewares/authMiddleware');
 
 // Route pour l'inscription
 router.post('/register', async (req, res) => {
@@ -94,6 +95,15 @@ router.post('/profile-setup', authMiddleware, async (req, res) => {
         await user.save();
 
         res.status(200).json({ message: 'Profile updated successfully' });
+    } catch (error) {
+        res.status(500).json({ message: 'Server error' });
+    }
+});
+
+router.get('/me', authMiddleware, async (req, res) => {
+    try {
+        const user = await User.findById(req.userId).select('-password');
+        res.status(200).json(user);
     } catch (error) {
         res.status(500).json({ message: 'Server error' });
     }

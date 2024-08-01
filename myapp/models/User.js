@@ -25,26 +25,31 @@ const UserSchema = new mongoose.Schema({
   },
   birthdate: {
     type: Date,
-    required: true,
+    required: false,
   },
   nationality: {
     type: String,
-    required: true,
+    required: false,
   },
   city: {
     type: String,
-    required: true,
+    required: false,
   },
   country: {
     type: String,
-    required: true,
+    required: false,
   },
-  favoriteGenres: [String],
+  favoriteGenres: {
+    type: [String],
+    required: false,
+  },
   bio: {
     type: String,
+    required: false,
   },
   profilePhoto: {
     type: String, // URL de la photo de profil
+    required: false,
   },
   followers: {
     type: Number,
@@ -64,3 +69,5 @@ module.exports = mongoose.model('User', UserSchema);
 // password: The user's password
 // username: The user's username
 // birthdate: The user's birthdate
+
+module.exports = mongoose.model('User', UserSchema);

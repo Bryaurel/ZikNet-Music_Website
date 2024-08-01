@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const authRoutes = require('./routes/auth');
 const path = require('path');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 // Import the User model
 const User = require('./models/User'); 
@@ -17,12 +18,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/myapp', {
-   useNewUrlParser: true,
-   useUnifiedTopology: true
-})
-.then(() => console.log('MongoDB connected'))
-.catch(err => console.log(err));
+mongoose.connect('mongodb://localhost:27017/myapp')
+    .then(() => console.log('MongoDB connected'))
+    .catch(err => console.log(err));
 
 // Routes
 app.use('/api/auth', authRoutes);
