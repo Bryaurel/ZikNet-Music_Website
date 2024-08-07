@@ -6,11 +6,75 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>ZikNet - My Profile</title>
         <link rel="stylesheet" href="css/styles-profile.css">
-        <script src="js/script-profile.js" defer></script>
     </head>
 
     <body>
-        <h1>My Profile</h1>
-        <div id="profile-info"></div>
+        <header class="main-nav fixed-nav">
+            <h1>ZikNet</h1>
+            <nav>
+                <ul>
+                    <li><a href="homepage.html">Home</a></li>
+                    <li><a href="profile.html">My Profile</a></li>
+                    <li><a href="courses.html">Courses</a></li>
+                    <li><a href="exercices.html">Exercices</a></li>
+                    <li><a href="opportunities.html">Opportunities</a></li>
+                    <li><a href="messages.html">Messages</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <aside class="sidebar fixed-nav">
+            <nav>
+                <ul>
+                    <li><a href="profile-setup.html">Edit Profile</a></li>
+                    <li><a href="profile-settings.html">Settings</a></li>
+                    <li><a href="index.html">Log Out</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main>
+            <section class="profile-header">
+                <div class="profile-photo">
+                    <img id="profile-photo" src="" alt="profile-photo">
+                </div>
+
+                <div class="profile-info">
+                    <h1 id="username">username</h1>
+                    <div class="profile-stats">
+                        <span><strong id="posts-count">0</strong><br>posts</span>
+                        <span><strong id="followers-count">0</strong><br>followers</span>
+                        <span><strong id="following-count">0</strong><br>following</span>
+                    </div>
+
+                    <h2 id="fullname">Full Name</h2>
+                    <p id="bio">User bio</p>
+                </div>
+            </section>
+
+            <section class="highlights">
+                <h3>Stories Highlights</h3>
+                <div id="highlights-container">
+                    <div class="highlight add-highlight">+</div>
+                    <!-- Additional story highlights go here -->
+                </div>
+            </section>
+
+            <hr>
+
+            <section class="posts">
+                <div class="posts-grid" id="posts-grid">
+                    <div class="add-post" id="add-post-button">+</div>
+                    <!-- User posts go here -->
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 ZikNet. All rights reserved.</p>
+        </footer>
+
+        <script src="js/script-profile.js"></script>
     </body>
+    
 </html>

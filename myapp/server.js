@@ -1,13 +1,12 @@
+require('dotenv').config();
+
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const authRoutes = require('./routes/auth');
 const path = require('path');
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
+const cors = require('cors')
 
-// Import the User model
-const User = require('./models/User'); 
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -16,9 +15,11 @@ const PORT = process.env.PORT || 3000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors());
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/myapp')
+const uri = 'mongodb://localhost:27017/';
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('MongoDB connected'))
     .catch(err => console.log(err));
 

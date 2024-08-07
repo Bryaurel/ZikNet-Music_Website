@@ -64,7 +64,7 @@ router.post('/login', async (req, res) => {
     }
 
     // Créer un token JWT
-    const token = jwt.sign({ userId: user._id }, 'your_jwt_secret', { expiresIn: '1h' });
+    const token = jwt.sign({ userId: user._id }, 's3cr3tK3yF0rJWT!@#2024', { expiresIn: '1h' });
 
     res.status(200).json({ token, userId: user._id });
   } catch (error) {
@@ -77,7 +77,7 @@ router.post('/profile-setup', authMiddleware, async (req, res) => {
     const { username, birthdate, nationality, city, country, favoriteGenres, bio, profilePhoto } = req.body;
 
     try {
-        const user = await User.findById(req.userId);
+        const user = await User.findById(req.user.userId);
     
         if (!user) {
             return res.status(404).json({ message: 'User not found' });
@@ -100,14 +100,14 @@ router.post('/profile-setup', authMiddleware, async (req, res) => {
     }
 });
 
+// Route pour obtenir les informations de l'utilisateur
 router.get('/me', authMiddleware, async (req, res) => {
     try {
-        const user = await User.findById(req.userId).select('-password');
+        const user = await User.findById(req.user.userId).select('-password');
         res.status(200).json(user);
     } catch (error) {
         res.status(500).json({ message: 'Server error' });
     }
 });
-
 
 module.exports = router;

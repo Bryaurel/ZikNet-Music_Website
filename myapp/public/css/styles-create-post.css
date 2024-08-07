@@ -1,0 +1,118 @@
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.main-nav.fixed-nav {
+    color: white;
+    text-align: center;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #8b4513; /* Couleur de fond de la barre de navigation */
+    z-index: 1000; /* Pour s'assurer que la barre de navigation apparaît au-dessus du contenu défilant */
+}
+
+.main-nav nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.main-nav nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.main-nav nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.main-nav nav ul li a:hover {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 5px;
+    color: #a55318;
+}
+
+.sidebar {
+    margin-top: 138px;
+    position: fixed;
+    top: 70px; /* Ajustez cette valeur pour aligner la barre de navigation avec la barre de navigation principale */
+    bottom: 0;
+    width: 200px; /* Largeur de la barre de navigation latérale */
+    background-color: #a55318;
+}
+
+.sidebar nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin-left: 20px;
+    margin-top: 30px;
+}
+
+.sidebar nav ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    display: block;
+}
+
+.sidebar nav ul li a:hover {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 5px;
+    color: #a55318;
+}
+
+.fixed-nav {
+    position: fixed;
+    top: 0;
+    width: 20%;
+    z-index: 1000;
+}
+
+main {
+    flex: 1;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-left: 300px;
+    margin-top: 150px;
+}
+
+.create-post {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.upload-section {
+    margin-bottom: 20px;
+}
+
+textarea {
+    width: 100%;
+}
+
+button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #8b4513;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}

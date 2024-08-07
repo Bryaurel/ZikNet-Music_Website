@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZikNet - Create Post</title>
+    <link rel="stylesheet" href="css/styles-create-post.css">
+</head>
+<body>
+    <header class="main-nav fixed-nav">
+        <h1>ZikNet</h1>
+        <nav>
+            <ul>
+                <li><a href="homepage.html">Home</a></li>
+                <li><a href="profile.html">My Profile</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="exercices.html">Exercices</a></li>
+                <li><a href="opportunities.html">Opportunities</a></li>
+                <li><a href="messages.html">Messages</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <aside class="sidebar fixed-nav">
+        <nav>
+            <ul>
+                <li><a href="profile-setup.html">Edit Profile</a></li>
+                <li><a href="profile-settings.html">Settings</a></li>
+                <li><a href="index.html">Log Out</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main>
+        <section class="create-post">
+            <h1>Create a New Post</h1>
+            <form id="create-post-form">
+                <label for="post-type">Select Post Type:</label>
+                <select id="post-type" name="post-type">
+                    <option value="image">Image</option>
+                    <option value="video">Video</option>
+                    <option value="voice">Voice Note</option>
+                    <option value="text">Text Note</option>
+                </select><br><br>
+
+                <div id="image-upload" class="upload-section">
+                    <label for="image">Upload Image:</label>
+                    <input type="file" id="image" name="image" accept="image/*">
+                </div>
+
+                <div id="video-upload" class="upload-section">
+                    <label for="video">Upload Video:</label>
+                    <input type="file" id="video" name="video" accept="video/*">
+                </div>
+
+                <div id="voice-record" class="upload-section">
+                    <label for="voice">Record Voice Note:</label>
+                    <button type="button" id="start-recording">Start Recording</button>
+                    <button type="button" id="stop-recording" disabled>Stop Recording</button>
+                    <audio id="voice-preview" controls></audio>
+                </div>
+
+                <div id="text-note" class="upload-section">
+                    <label for="text">Write a Note:</label>
+                    <textarea id="text" name="text" rows="4" cols="50"></textarea>
+                </div>
+
+                <button type="submit" id="submit-post">Submit Post</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 ZikNet. All rights reserved.</p>
+    </footer>
+
+    <script src="js/script-create-post.js"></script>
+</body>
+</html>

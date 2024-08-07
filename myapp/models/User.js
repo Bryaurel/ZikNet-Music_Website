@@ -69,5 +69,3 @@ module.exports = mongoose.model('User', UserSchema);
 // password: The user's password
 // username: The user's username
 // birthdate: The user's birthdate
-
-module.exports = mongoose.model('User', UserSchema);

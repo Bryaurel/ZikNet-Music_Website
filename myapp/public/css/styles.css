@@ -44,7 +44,7 @@ form input[type="submit"]:hover {
 }
 
 .FirstPage{
-    background-image: url(/myapp/public/Media/bg.png);
+    background-image: url('/Media/bg.png');
     background-size: cover;
     background-attachment: fixed;
     width: 100%;
