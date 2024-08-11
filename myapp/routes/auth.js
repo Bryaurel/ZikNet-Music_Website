@@ -32,7 +32,6 @@ router.post('/register', async (req, res) => {
       nationality,
       city,
       country,
-      favoriteGenres,
       bio,
       profilePhoto,
     });
@@ -64,7 +63,7 @@ router.post('/login', async (req, res) => {
     }
 
     // Créer un token JWT
-    const token = jwt.sign({ userId: user._id }, 's3cr3tK3yF0rJWT!@#2024', { expiresIn: '1h' });
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
     res.status(200).json({ token, userId: user._id });
   } catch (error) {
@@ -88,7 +87,6 @@ router.post('/profile-setup', authMiddleware, async (req, res) => {
         user.nationality = nationality;
         user.city = city;
         user.country = country;
-        user.favoriteGenres = favoriteGenres.split(',').map((genre) => genre.trim());
         user.bio = bio;
         user.profilePhoto = profilePhoto;
 

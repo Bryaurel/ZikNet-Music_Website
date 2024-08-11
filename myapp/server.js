@@ -5,8 +5,8 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const authRoutes = require('./routes/auth');
 const path = require('path');
-const cors = require('cors')
-
+const cors = require('cors');
+const User = require('./models/User');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -18,7 +18,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
 // Connect to MongoDB
-const uri = 'mongodb://localhost:27017/';
+const uri = process.env.MONGODB_URI || 'mongodb://localhost:27017/';
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('MongoDB connected'))
     .catch(err => console.log(err));
