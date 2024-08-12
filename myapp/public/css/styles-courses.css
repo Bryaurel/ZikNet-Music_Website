@@ -121,9 +121,11 @@ h2 {
 }
 
 .video {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    font-size: Arial;
+}
+
+.video p {
+    font-size: 15px;
 }
 
 footer {
@@ -131,7 +133,7 @@ footer {
     color: white;
     text-align: center;
     padding: 10px;
-    margin-left: 260px;
+    margin-left: 200px;
 }
 
 /* For screens smaller than 600px (mobile) */
