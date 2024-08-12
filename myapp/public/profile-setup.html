@@ -18,7 +18,7 @@
                 <li><a href="homepage.html">Home</a></li>
                 <li><a href="profile.html">My Profile</a></li>
                 <li><a href="courses.html">Courses</a></li>
-                <li><a href="exercices.html">Exercices</a></li>
+                <li><a href="exercises.html">Exercises</a></li>
                 <li><a href="opportunities.html">Opportunities</a></li>
                 <li><a href="messages.html">Messages</a></li>
             </ul>
@@ -36,7 +36,7 @@
     </aside>
 
     <main>
-        <form id="profile-setup-form" aria-labelledby="form-title">
+        <form id="profile-setup-form" aria-labelledby="form-title" method="post" action="profile-setup.php" enctype="multipart/form-data">
             <h1 id="form-title" style="color: #a55318;">Profile Setup</h1>
             <fieldset>
                 <legend>Personal Information</legend>
@@ -64,7 +64,9 @@
                 <label for="birthday" class="birthday">Birthday:</label>
                 <input type="date" id="birthday" name="birthday"><br><br>
 
-                <label for="bio">Bio:</label><label for="username" class="username">Username:</label><input type="text" id="username" name="username" required><br>
+                <label for="bio">Bio:</label>
+                <label for="username" class="username">Username:</label>
+                <input type="text" id="username" name="username" required><br>
                 <textarea id="bio" name="bio" rows="6" required></textarea>
                 
                 <span id="username-error" style="color: red;"></span>
@@ -83,7 +85,7 @@
                 <label for="male">Male</label><br>
                 <input type="radio" id="female" name="gender" value="Female" aria-checked="false">
                 <label for="female">Female</label><br>
-                <input type="radio" id="prefer-not-to-say" name="prefer-not-to-say" value="Prefer not to say" aria-checked="false">
+                <input type="radio" id="prefer-not-to-say" name="gender" value="Prefer not to say" aria-checked="false">
                 <label for="prefer-not-to-say">Prefer not to say</label><br><br>
             </fieldset>
 
@@ -93,7 +95,7 @@
                 <input type="file" id="cv" name="cv"><br><br>
             </fieldset>
 
-            <a href="profile.html>"><input type="submit" value="Save"></a>
+            <a href="profile.html"><input type="submit" value="Save"></a>
         </form>
     </main>
 

@@ -21,7 +21,7 @@ app.use(session({
     secret: process.env.SESSION_SECRET || 'secret',
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: false } // Assurez-vous que ce soit 'true' en production avec HTTPS
+    cookie: { secure: process.env.NODE_ENV === 'production' } // Utilisation de `process.env.NODE_ENV` pour vérifier si on est en production
 }));
 
 // Connect to MongoDB
