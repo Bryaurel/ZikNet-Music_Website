@@ -36,15 +36,15 @@
     </aside>
 
     <main>
-        <form id="profile-setup-form" aria-labelledby="form-title" method="post" action="profile-setup.php" enctype="multipart/form-data">
+        <form id="profile-setup-form" aria-labelledby="form-title" method="post" action="http://localhost/ziknet/profile-setup.php" enctype="multipart/form-data">
             <h1 id="form-title" style="color: #a55318;">Profile Setup</h1>
             <fieldset>
                 <legend>Personal Information</legend>
-                <label for="first-name">First name:</label>
-                <input type="text" id="first-name" name="first-name" aria-required="true">
+                <label for="firstname">First name:</label>
+                <input type="text" id="firstname" name="firstname" aria-required="true">
                 
-                <label for="last-name" class="last-name">Last name:</label>
-                <input type="text" id="last-name" name="last-name" aria-required="true"><br><br>
+                <label for="lastname" class="lastname">Last name:</label>
+                <input type="text" id="lastname" name="lastname" aria-required="true"><br><br>
 
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" placeholder="example@example.com" aria-required="true">
@@ -75,9 +75,9 @@
             <fieldset>
                 <legend>Preferences</legend>
                 <label>Preferred contact method:</label><br>
-                <input type="radio" id="email-contact" name="contact-method" value="Email" aria-checked="false">
+                <input type="radio" id="email-contact" name="contactMethod" value="Email" aria-checked="false">
                 <label for="email-contact">Email</label><br>
-                <input type="radio" id="phone-contact" name="contact-method" value="Phone" aria-checked="false">
+                <input type="radio" id="phone-contact" name="contactMethod" value="Phone" aria-checked="false">
                 <label for="phone-contact">Phone</label><br><br>
 
                 <label>Gender:</label><br>

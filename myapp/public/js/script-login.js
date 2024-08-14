@@ -1,19 +1,14 @@
 document.getElementById('login-form').addEventListener('submit', async (e) => {
     e.preventDefault();
-    const response = await fetch('/api/auth/login', {
+    const response = await fetch('http://localhost:80/ziknet/login.php', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json',
+            'Content-Type': 'application/x-www-form-urlencoded',
         },
-        body: JSON.stringify({
-            email: document.querySelector('[name="email"]').value,
-            password: document.querySelector('name="password"]').value,
-        }),
+        body: new URLSearchParams(new FormData(e.target)),
     });
 
     if (response.ok) {
-        const data = await response.json();
-        localStorage.setItem('token', data.token);
         window.location.href = 'profile.html';
     } else {
         alert('Login failed');

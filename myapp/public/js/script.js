@@ -1,21 +1,17 @@
 document.getElementById('registration-form').addEventListener('submit', async (e) => {
     e.preventDefault();
-    const response = await fetch('/api/auth/register', {
+    const response = await fetch('http://localhost/ziknet/register.php', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json',
+            'Content-Type': 'application/x-www-form-urlencoded',
         },
-        body: JSON.stringify({
-            firstname: document.querySelector('[name="firstname"]').value,
-            lastname: document.querySelector('[name="lastname"]').value,
-            email: document.querySelector('[name="email"]').value,
-            password: document.querySelector('[name="password"]').value,
-        }),
+        body: new URLSearchParams(new FormData(e.target)),
     });
 
     if (response.ok) {
         window.location.href = 'profile-setup.html';
     } else {
-        alert('Registration failed');
+        const errorText = await response.text(); // Récupère le texte de l'erreur
+        alert('Registration failed: ' + errorText); // Affiche un message d'erreur plus détaillé
     }
 });

@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const authRoutes = require('./routes/auth');
 const path = require('path');
 const cors = require('cors');
+const { createProxyMiddleware } = require('http-proxy-middleware');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -15,6 +16,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
+app.use('/api', createProxyMiddleware({ 
+  target: 'http://localhost:8080', // L'URL de votre serveur Apache
+  changeOrigin: true,
+  pathRewrite: {
+      '^/api': '/', // Remplace /api par /
+  },
+}));
 
 // Configurer les sessions
 app.use(session({
