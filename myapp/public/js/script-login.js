@@ -9,7 +9,7 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
     });
 
     if (response.ok) {
-        window.location.href = 'profile.html';
+        window.location.href = 'homepage.html';
     } else {
         alert('Login failed');
     }
