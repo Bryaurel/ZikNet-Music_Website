@@ -15,18 +15,22 @@ if ($conn->connect_error) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $firstname = $_POST['firstname'];
-    $lastname = $_POST['lastname'];
     $email = $_POST['email'];
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $password = $_POST['password'];
 
-    $stmt = $conn->prepare("INSERT INTO users (firstname, lastname, email, password) VALUES (?, ?, ?, ?)");
-    $stmt->bind_param("ssss", $firstname, $lastname, $email, $password);
+    $stmt = $conn->prepare("SELECT id, password FROM users WHERE email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $stmt->store_result();
+    $stmt->bind_result($id, $hashed_password);
+    $stmt->fetch();
 
-    if ($stmt->execute()) {
-        echo "User registered successfully!";
+    if ($stmt->num_rows > 0 && password_verify($password, $hashed_password)) {
+        session_start();
+        $_SESSION['user_id'] = $id;
+        echo "Login successful!";
     } else {
-        echo "Error: " . $stmt->error;
+        echo "Invalid email or password!";
     }
 
     $stmt->close();

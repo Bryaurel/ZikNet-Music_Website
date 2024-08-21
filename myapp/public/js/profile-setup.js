@@ -1,4 +1,10 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.getElementById("profile-setup-form").addEventListener("submit", function (event) {
+    // Empêcher l'envoi par défaut pour la gestion JavaScript
+    event.preventDefault();
+
+    console.log("DOM entirely loaded and analysed");
+
+    // Liste des pays
     const countries = [
         "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", 
         "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", 
@@ -39,69 +45,70 @@ document.addEventListener('DOMContentLoaded', () => {
     countrySelect.innerHTML = "";
 
     countries.forEach(country => {
-        const option = document.createElement('option');
+        let option = document.createElement('option');
         option.value = country;
         option.text = country;
-        nationalitySelect.appendChild(option);
+        nationalitySelect.appendChild(option.cloneNode(true));
         countrySelect.appendChild(option.cloneNode(true));
     });
 
-    const form = document.getElementById('profile-setup-form');
-    const usernameInput = document.getElementById('username');
-    const usernameError = document.getElementById('username-error');
-    
-    //Validation du nom d'utilisateur
-    usernameInput.addEventListener('blur', () => {
-        const username = usernameInput.value.trim();
+    // Récupération des valeurs des champs du formulaire
+    let firstname = document.getElementById("firstname")?.value || "";
+    let lastname = document.getElementById("lastname")?.value || "";
+    let email = document.getElementById("email")?.value || "";
+    let phone = document.getElementById("phone")?.value || "";
+    let nationality = document.getElementById("nationality")?.value || "";
+    let country = document.getElementById("country")?.value || "";
+    let city = document.getElementById("city")?.value || "";
+    let birthday = document.getElementById("birthday")?.value || "";
+    let bio = document.getElementById("bio")?.value || "";
+    let username = document.getElementById("username")?.value || "";
+    let contactMethod = document.querySelector('input[name="contactMethod"]:checked')?.value || "";
+    let gender = document.querySelector('input[name="gender"]:checked')?.value || "";
+    let profilePhoto = document.getElementById("profilePhoto").files[0];
+    let cv = document.getElementById("cv").files[0];
 
-        // Simulate an API call to check if the username is taken
-        setTimeout(() => {
-            const takenUsernames = ['user1', 'user2', 'user3']; // Example of taken usernames
-            if (takenUsernames.includes(username)) {
-                usernameError.textContent = 'Username is already taken';
-                usernameInput.setCustomValidity('Username is already taken');
-            } else {
-                usernameError.textContent = '';
-                usernameInput.setCustomValidity('');
-            }
-        }, 500);
-    });
+    // Validation simple du formulaire
+    if (!phone || !nationality || !country || !city || !username) {
+        alert("Please fill in all required fields.");
+        return;
+    }
 
-    form.addEventListener('submit', (event) => {
-        event.preventDefault();
+    // Création d'un objet FormData pour l'envoi des données
+    let formData = new FormData();
+    formData.append("firstname", firstname);
+    formData.append("lastname", lastname);
+    formData.append("email", email);
+    formData.append("phone", phone);
+    formData.append("nationality", nationality);
+    formData.append("country", country);
+    formData.append("city", city);
+    formData.append("birthday", birthday);
+    formData.append("bio", bio);
+    formData.append("username", username);
+    formData.append("contactMethod", contactMethod);
+    formData.append("gender", gender);
 
-        if (usernameInput.checkValidity()) {
-            const username = usernameInput.value;
-            const firstName = document.getElementById('firstname').value;
-            const lastName = document.getElementById('lastname').value;
-            const bio = document.getElementById('bio').value;
+    // Ajout des fichiers au FormData
+    if (profilePhoto) {
+        formData.append("profilePhoto", profilePhoto);
+    }
+    if (cv) {
+        formData.append("cv", cv);
+    }
 
-            // Sauvegarder les données dans localStorage
-            localStorage.setItem('username', username);
-            localStorage.setItem('firstName', firstName);
-            localStorage.setItem('lastName', lastName);
-            localStorage.setItem('bio', bio);
-
-            // Rediriger vers la page de profil
-            window.location.href = 'profile.html';
+    // Envoi des données via fetch API
+    fetch("http://localhost/ziknet/profile-setup.php", {
+        method: "POST",
+        body: formData,
+    })
+    .then(response => {
+        if (response.ok) {
+            // Redirige vers le profil après la sauvegarde réussie
+            window.location.href = "profile.html";
         } else {
-            usernameInput.reportValidity();
-        }     
-    });
-
-    // Chargement des données dans la page de profil
-    const profileUsername = document.getElementById('profile-username');
-    const profileFirstName = document.getElementById('profile-first-name');
-    const profileLastName = document.getElementById('profile-last-name');
-    const profileBio = document.getElementById('profile-bio');
-
-    const storedUsername = localStorage.getItem('username');
-    const storedFirstName = localStorage.getItem('firstName');
-    const storedLastName = localStorage.getItem('lastName');
-    const storedBio = localStorage.getItem('bio');
-
-    if (profileUsername) profileUsername.textContent = storedUsername || '';
-    if (profileFirstName) profileFirstName.textContent = storedFirstName || '';
-    if (profileLastName) profileLastName.textContent = storedLastName || '';
-    if (profileBio) profileBio.textContent = storedBio || '';
+            return response.text().then(text => { throw new Error(text); });
+        }
+    })
+    .catch(error => console.error("Error:", error));
 });

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZikNet - Exercices</title>
+    <link rel="stylesheet" href="css/styles-home.css">
+    </head>
+
+    <body>
+        <header class="main-nav fixed-nav">
+            <h1>ZikNet</h1>
+            <nav>
+                <ul>
+                    <li><a href="homepage.html">Home</a></li>
+                    <li><a href="profile.html">My Profile</a></li>
+                    <li><a href="courses.html">Courses</a></li>
+                    <li><a href="exercises.html">Exercices</a></li>
+                    <li><a href="opportunities.html">Opportunities</a></li>
+                    <li><a href="messages.html">Messages</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <aside class="sidebar fixed-nav">
+            <nav>
+                <ul>
+                    <li><a href="#exercises">Exercises</a></li>
+                    <li><a href="#quizzes">Quizzes</a></li>
+                    <li><a href="#assessments">Assessments</a></li>
+                    <li><a href="#progress">Progress</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main>
+            <!-- Filter Section -->
+            <section id="filter">
+                <h2>Filter Exercises</h2>
+                <form id="filter-form">
+                    <label for="category">Category:</label>
+                    <select id="category">
+                        <option value="all">All</option>
+                        <option value="music-theory">Music Theory</option>
+                        <option value="instrument">Instrument Practice</option>
+                        <option value="composition">Composition</option>
+                    </select>
+
+                    <label for="difficulty">Difficulty:</label>
+                    <select id="difficulty">
+                        <option value="all">All</option>
+                        <option value="beginner">Beginner</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="advanced">Advanced</option>
+                    </select>
+
+                    <button type="submit">Apply Filters</button>
+                </form>
+            </section>
+
+            <!-- Exercises List -->
+            <section id="exercises">
+                <h2>Exercises</h2>
+                <div id="exercise-list">
+                    <!-- Dynamically generated list of exercises -->
+                </div>
+            </section>
+
+            <!-- Feedback Section -->
+            <section id="feedback">
+                <h2>Feedback</h2>
+                <div id="feedback-content">
+                    <!-- Feedback content will be displayed here -->
+                </div>
+            </section>
+
+            <!-- Progress Section -->
+            <section id="progress">
+                <h2>Your Progress</h2>
+                <div id="progress-bar">
+                    <!-- Progress bar or indicators -->
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 ZikNet. All rights reserved.</p>
+        </footer>
+
+        <script src="js/script.js"></script>
+    </body>
+</html>

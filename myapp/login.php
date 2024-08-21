@@ -28,9 +28,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($stmt->num_rows > 0 && password_verify($password, $hashed_password)) {
         session_start();
         $_SESSION['user_id'] = $id;
-        echo "Login successful!";
+        http_response_code(200); // Code 200 signifie succès
+        echo json_encode(["message" => "Login successful!"]);
     } else {
-        echo "Invalid email or password!";
+        http_response_code(401); // Code 401 signifie non autorisé
+        echo json_encode(["message" => "Invalid email or password!"]);
     }
 
     $stmt->close();

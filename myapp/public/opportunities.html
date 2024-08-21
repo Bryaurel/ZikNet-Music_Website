@@ -16,17 +16,55 @@
                     <li><a href="homepage.html">Home</a></li>
                     <li><a href="profile.html">My Profile</a></li>
                     <li><a href="courses.html">Courses</a></li>
-                    <li><a href="exercices.html">Exercices</a></li>
+                    <li><a href="exercises.html">Exercices</a></li>
                     <li><a href="opportunities.html">Opportunities</a></li>
                     <li><a href="messages.html">Messages</a></li>
                 </ul>
             </nav>
         </header>
 
+        <aside class="sidebar fixed-nav">
+            <nav>
+                <ul>
+                    <li><a href="applications.html">My applications</a></li>
+                    <li><a href="choices.html">My choices</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main>
+            <h1 class="opportunities">Opportunities Board</h1>
+            <div class="filters">
+                <input type="text" id="searchBar" placeholder="Search opportunities...">
+                <select id="categoryFilter">
+                    <option value="">All Categories</option>
+                    <option value="job">Job Postings</option>
+                    <option value="gig">Performance Gigs</option>
+                    <option value="audition">Audition Calls</option>
+                    <option value="collaboration">Collaboration Requests</option>
+                    <option value="competition">Competitions</option>
+                    <option value="grant">Grants</option>
+                    <option value="scholarship">Scholarships</option>
+                    <option value="education">Educational Programs</option>
+                </select>
+                <select id="locationFilter">
+                    <option value="">All Locations</option>
+                    <option value="remote">Remote</option>
+                    <option value="local">Local</option>
+                    <option value="international">International</option>
+                </select>
+            </div>
+
+            <div id="opportunitiesList" class="opportunities-list">
+                <!-- Dynamic content will be loaded here -->
+            </div>
+             
+        </main>
+
         <footer>
             <p>&copy; 2024 ZikNet. All rights reserved.</p>
         </footer>
 
-        <script src="js/script.js"></script>
+        <script src="js/styles-opportunities.js"></script>
     </body>
 </html>
