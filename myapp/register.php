@@ -16,21 +16,16 @@ if ($conn->connect_error) {
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
-    $password = $_POST['password'];
+    $birthday = $_POST['birthday'];
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-    $stmt = $conn->prepare("SELECT id, password FROM users WHERE email = ?");
-    $stmt->bind_param("s", $email);
-    $stmt->execute();
-    $stmt->store_result();
-    $stmt->bind_result($id, $hashed_password);
-    $stmt->fetch();
+    $stmt = $conn->prepare("INSERT INTO users (email, birthday, password) VALUES (?, ?, ?)");
+    $stmt->bind_param("sss", $email, $birthday, $password);
 
-    if ($stmt->num_rows > 0 && password_verify($password, $hashed_password)) {
-        session_start();
-        $_SESSION['user_id'] = $id;
-        echo "Login successful!";
+    if ($stmt->execute()) {
+        echo json_encode(["status" => "success", "message" => "User registered successfully!"]);
     } else {
-        echo "Invalid email or password!";
+        echo json_encode(["status" => "error", "message" => $stmt->error]);
     }
 
     $stmt->close();

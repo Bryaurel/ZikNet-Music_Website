@@ -1,46 +1,38 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    const token = localStorage.getItem('token');
-    const response = await fetch('/api/auth/me', {
-        headers: {
-            'Authorization': `Bearer ${token}`,
-        },
-    });
+    try {
+        const response = await fetch('http://localhost/ziknet/profile.php'); // Met à jour le chemin pour accéder au fichier PHP
 
-    if (response.ok) {
-        const user = await response.json();
-        document.getElementById('profile-photo').src = user.profilePhoto;
-        document.getElementById('username').innerText = user.username;
-        document.getElementById('fullname').innerText = `${user.firstname} ${user.lastname}`;
-        document.getElementById('bio').innerText = user.bio;
+        if (response.ok) {
+            const user = await response.json();
 
-        // Mock data for followers, following, posts, and highlights
-        const followersCount = 120; // Replace with real data
-        const followingCount = 150; //Replace with real data
-        const postsCount = 10; // Replace with real data
-        const highlights = ['Highlight 1', 'Highlight 2']; // Replace with real data
-        const posts = ['Post 1', 'Post 2', 'Post 3', 'Post 4'];
+            // Utiliser l'URL complète ou le chemin stocké dans la base de données
+            document.getElementById('profile-photo').src = user.profilePhoto ? user.profilePhoto : 'default.jpg';
+            document.getElementById('username').innerText = user.username;
+            document.getElementById('fullname').innerText = `${user.firstname} ${user.lastname}`;
+            document.getElementById('bio').innerText = user.bio;
 
-        document.getElementById('followers-count').innerText = `${followersCount} followers`;
-        document.getElementById('following-count').innerText = `${followingCount} following`;
-        document.getElementById('posts-count').innerText = `${postsCount} posts`;
+            document.getElementById('followers-count').innerText = `${user.followersCount} followers`;
+            document.getElementById('following-count').innerText = `${user.followingCount} following`;
+            document.getElementById('posts-count').innerText = `${user.postsCount} posts`;
 
-        const highlightsContainer = document.getElementById('highlights-container');
-        highlights.forEach(highlight => {
-            const highlightItem = document.createElement('div');
-            highlightItem.className = 'highlight-item';
-            highlightItem.innerText = highlight;
-            highlightsContainer.appendChild(highlightItem);
-        });
+            const highlightsContainer = document.getElementById('highlights-container');
+            user.highlights.forEach(highlight => {
+                const highlightItem = document.createElement('div');
+                highlightItem.className = 'highlight-item';
+                highlightItem.innerText = highlight;
+                highlightsContainer.appendChild(highlightItem);
+            });
 
-        const postsGrid = document.getElementById('posts-grid');
-        posts.forEach(post => {
-            const postItem = document.getElementById('div');
-            postItem.className = 'post-item';
-            postItem.innerText = post;
-            postsGrid.appendChild(postItem);
-        });
-    } else {
-        alert('Failed to load profile');
+            const postsGrid = document.getElementById('posts-grid');
+            user.posts.forEach(post => {
+                const postItem = document.createElement('div');
+                postItem.className = 'post-item';
+                postItem.innerText = post;
+                postsGrid.appendChild(postItem);
+            });
+        } else {
+            alert('Failed to load profile');
+        }
     }
 });
 

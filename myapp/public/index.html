@@ -21,9 +21,9 @@
 
             <div class="form">
                 <form action="http://localhost/ziknet/register.php" method="post" id="registration-form">
-                    <input type="text" name="firstname" placeholder="First name" required><br>
-                    <input type="text" name="lastname" placeholder="Last name" required><br>
                     <input type="email" name="email" id="email" placeholder="E-mail address" required><br>
+                    <label for="birthday" class="birthday">Birthday:</label>
+                    <input type="date" id="birthday" name="birthday" required><br>
                     <input type="password" name="password" placeholder="Password" required><br>
                     <input type="submit" value="Register">
                 </form>

@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const nationalitySelect = document.getElementById('nationality');
     const countrySelect = document.getElementById('country');
 
-    // Réinitialiser les options
+    // Reset options
     nationalitySelect.innerHTML = "";
     countrySelect.innerHTML = "";
 
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const usernameInput = document.getElementById('username');
     const usernameError = document.getElementById('username-error');
     
-    //Validation du nom d'utilisateur
+    // Username validation
     usernameInput.addEventListener('blur', () => {
         const username = usernameInput.value.trim();
 
@@ -71,37 +71,47 @@ document.addEventListener('DOMContentLoaded', () => {
         event.preventDefault();
 
         if (usernameInput.checkValidity()) {
-            const username = usernameInput.value;
-            const firstName = document.getElementById('firstname').value;
-            const lastName = document.getElementById('lastname').value;
-            const bio = document.getElementById('bio').value;
+            const formData = new FormData(form);
 
-            // Sauvegarder les données dans localStorage
-            localStorage.setItem('username', username);
-            localStorage.setItem('firstName', firstName);
-            localStorage.setItem('lastName', lastName);
-            localStorage.setItem('bio', bio);
-
-            // Rediriger vers la page de profil
-            window.location.href = 'profile.html';
+            // Send data to server instead of localStorage
+            fetch('http://localhost/ziknet/profile-setup.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                if (data.status === 'success') {
+                    window.location.href = 'profile.html'; // Redirect to profile page
+                } else {
+                    console.error('Error:', data.message);
+                    alert('Error: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred while updating your profile.');
+            });
         } else {
             usernameInput.reportValidity();
         }     
     });
 
-    // Chargement des données dans la page de profil
+    // Load profile data from server on profile page
     const profileUsername = document.getElementById('profile-username');
     const profileFirstName = document.getElementById('profile-first-name');
     const profileLastName = document.getElementById('profile-last-name');
     const profileBio = document.getElementById('profile-bio');
 
-    const storedUsername = localStorage.getItem('username');
-    const storedFirstName = localStorage.getItem('firstName');
-    const storedLastName = localStorage.getItem('lastName');
-    const storedBio = localStorage.getItem('bio');
-
-    if (profileUsername) profileUsername.textContent = storedUsername || '';
-    if (profileFirstName) profileFirstName.textContent = storedFirstName || '';
-    if (profileLastName) profileLastName.textContent = storedLastName || '';
-    if (profileBio) profileBio.textContent = storedBio || '';
+    // Fetch user data from server
+    fetch('http://localhost/ziknet/profile.php')
+        .then(response => response.json())
+        .then(data => {
+            if (profileUsername) profileUsername.textContent = data.username || '';
+            if (profileFirstName) profileFirstName.textContent = data.firstName || '';
+            if (profileLastName) profileLastName.textContent = data.lastName || '';
+            if (profileBio) profileBio.textContent = data.bio || '';
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
 });
